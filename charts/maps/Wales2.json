@@ -1,0 +1,49 @@
+{"$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "title": {
+    "text": "Wales - place names",
+    "subtitle":["Local authorities by starting letter of place name",""],
+    "subtitleFontStyle":"italic",
+    "subtitleFontSize":10,
+    "anchor": "middle",
+    "color": "black"
+  },
+
+  "config": {
+    "background":"white",
+    "view": {"stroke": "transparent"}},
+  
+  "width": 300,
+  "height": 300,
+  
+  "data": {
+    "url": "https://raw.githubusercontent.com/RDeconomist/RDeconomist.github.io/main/charts/maps/geoWalWards.json",
+        "format": {
+          "type": "topojson",
+          "feature": "wards"}
+      },
+
+  "transform": [
+    {"calculate": "slice(datum.properties.WD13NM, 0, 1)", "as": "name"}
+  ],    
+
+  "projection": {"type": "mercator"},
+  
+  "mark": {
+      "type": "geoshape",
+      "stroke": "white",
+      "strokeWidth":0.1},
+  
+  "encoding": {
+    "color": {
+     "field": "name",
+     "type": "nominal",
+     "scale": {"scheme": "inferno"},
+       "legend": {
+        "title": null,
+        "columns":2,
+        "orient":"top-left"
+    }
+  }
+}
+}

@@ -1,0 +1,33 @@
+{"$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "title": {
+    "text": "World Map",
+    "subtitle":["Natural Earth Projection",""],
+    "subtitleFontStyle":"italic",
+    "subtitleFontSize":10,
+    "anchor": "middle",
+    "color": "black"
+  },
+
+  "config": {
+    "background":"white",
+    "view": {"stroke": "transparent"}},
+  
+  "width": 600,
+  "height": 300,
+  
+  "data": {
+    "url": "https://unpkg.com/world-atlas@1.1.4/world/110m.json",
+        "format": {
+          "type": "topojson",
+          "feature": "countries"}
+      },
+
+  "projection": {
+    "type": "naturalEarth1"},
+    "mark": {
+      "type": "geoshape",
+      "fill": "lightgray",
+      "stroke": "white",
+      "strokeWidth":0.1}
+}

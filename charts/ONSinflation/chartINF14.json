@@ -19,7 +19,7 @@
 
 
   "data": {
-    "url": "https://raw.githubusercontent.com/RDeconomist/prices/master/dbLatestRelease.csv"
+    "url": "https://raw.githubusercontent.com/RDeconomist/prices/master/analysis/dbLatestRelease.csv"
   },
 
   "height":400,
@@ -85,4 +85,4 @@
       {"field": "downRank", "type": "quantitative", "title": "Down Rank", "format": ".0f"}
     ]
 }
-}
+} 

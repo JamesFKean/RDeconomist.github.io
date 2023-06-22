@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+
+<head>
+
+      <!-- START ANALYTICS -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <!-- This stuff provided by Google from the Admin page of Analysics account -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JP82FVH378"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-JP82FVH378');
+    </script>
+    <!-- END ANALYTICS -->
+
+<!--Meta stuff-->
+<meta charset="utf-8">
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<!--Facebook meta - this comes up when you post a link to the site-->
+<meta property="og:title" content="Rapid Charts">
+<meta property="og:description" content="Live Covid charts running directly from official data. Auto-updates daily.">
+<meta property="og:image" content="covidCases.png">
+<meta property="og:url" content="http://rapidcharts.io/index.htm">
+
+<!--Favicon-->
+<link rel="icon" href="images/favicon.png">
+<link rel="shortcut icon" href="images/favicon.png" />
+<link rel="apple-touch-icon" href="images/favicon.png" />
+
+<!--Title - this is the bit that comes up in the tab-->
+<title>Rapid Maps</title>
+
+<!--Main Stylesheet-->
+<link rel="stylesheet" href="css/maps.css">
+<link rel="stylesheet" href="css/footer.css">
+
+
+<!--The next three lines allow the Vega embed-->
+<script src="https://cdn.jsdelivr.net/npm/vega@5.17.0"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-lite@4.17.0"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-embed@6.12.2"></script>
+
+<!-- Add icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+
+<body>
+
+  
+
+<!-- heading for page-->
+<div class="heading">
+
+  <h1>rapid<span style="color: rgba(100,200,100)">maps</span></h1>
+  <span style="display:block; height: 5px;"></span>
+ 
+  <h2>Cartography x Economics</h2>
+  <span style="display:block; height: 5px;"></span>
+  
+</div>
+
+
+<!-- START - Container that will house everything-->
+<span style="display:block; height: 30px;"></span>
+<div class="mapContainer">
+  <p><b>Wales</p></b>
+  <p id="rubric" class="rubric">The maps of Wales take you through the first few steps you take when mapping economic data.</p>
+    
+    <!-- // Wales Maps -->
+    <div class="map" id="map1"></div>
+    <div class="map" id="map2"></div>
+    <div class="map" id="map3"></div>
+    <div class="map" id="map4"></div>
+
+    <!-- // Description of Wales Maps: -->
+    <p id="rubric" class="rubric">
+      <ul>
+        <li><b> Map 1.</b> The first step is to locate a JSON file that contains the coordinates needed to draw the map. This is then loaded in the usual way, either directly from an API, or saved to a hosting service such as GitHub and delivered to your page as a raw file.</li>
+        <span style="display:block; height: 10px;"></span> 
+        <li><b> Map 2.</b> The second map adds colour. In many of the GEOJSON files that you access there may be interesting data that you wish to use to colour your chart. To do this you need to access those value and use this field to supply the colour to your graph. In this teaching example, I am using the first name of the place to add colour.</li>
+        <span style="display:block; height: 10px;"></span> 
+        <li><b> Map 3.</b> The third map show how you can filter geographic data, to exclude areas that you do not want to show. In this case I ranked the place names and only want to include the top 5. The other areas of the map are not shown at all.</li>
+        <span style="display:block; height: 10px;"></span>
+        <li><b> Map 4.</b> The fourth map forms the basis of most maps. It combines the JSON that specifies the boundaries of each of the wards, and then matches these using “lookup”, with the values in a csv file of population. </li>
+    </ul>  
+    </p>
+
+</div>
+<!-- END - Grid of divs that will house the charts-->  
+
+
+  
+  
+
+
+<!-- START - Container that will house everything-->
+<span style="display:block; height: 30px;"></span>
+<div class="mapContainer">
+  <p><b>England</p></b>
+  <p id="rubric" class="rubric">Start to build more interactive maps using tooltips and year selectors.</p>
+  
+  <!-- // England Maps: -->
+  <div class="map" id="map5"></div>
+  <div class="map" id="map6"></div>
+  <div class="map" id="map7"></div>
+  <div class="map" id="map8"></div>
+
+   <!-- // Description of England Maps: -->
+   <p id="rubric" class="rubric">
+    <ul>
+      <li><b> Map 1.</b> Again the first step is to check our base map works as we want it to.</li>
+      <span style="display:block; height: 10px;"></span> 
+      <li><b> Map 2.</b> As with the Wales example this map adds colour, picking colours based on the first letter of the place name. This is done using a string function.</li>
+      <span style="display:block; height: 10px;"></span> 
+      <li><b> Map 3.</b> Population. This map uses a secondary data set that contains information on population by wards. The cities can clearly be seen. The tooltip has been added, so you can hover over the areas. However, some areas are white, since the match between the dataset and the map is imperfect.</li>
+      <span style="display:block; height: 10px;"></span>
+      <li><b> Map 4.</b> House prices. This map matches house prices in an interactive way. The drop down box acts as a filter, so the map can be drawn for different years. </li>
+  </ul>  
+  </p>
+
+
+</div>
+<!-- END - Grid of divs that will house the charts-->  
+
+
+<span style="display:block; height: 30px;"></span>
+<div class="mapContainer">
+  <p><b>World</p></b>
+  <p id="rubric" class="rubric">Linking maps of the World to IMF, World Bank and UN data.</p>
+  <p id="rubric" class="rubric">The core challenge in economic cartography is linking your economic data to your map. These maps show some of the problems, and how to overcome them.</p>
+   <div class="mapBig" id="map9"></div>
+  <p id="rubric" class="rubric">The first map is a simple base map. This one uses the Natural Earth Projection. The data has country codes, but not country names. Since we want to use country names in our Tooltip, these will need to be matched in from a second data source.</p>
+   <div class="mapBig" id="map10"></div>
+  <p id="rubric" class="rubric">The second map adds country names via a "lookup" transform. Countries are then coloured based on their names. Some are white, and hovering the mouse over them will reveal that the name is "null". This is because the match has not worked properly.</p>
+   <div class="mapBig" id="map11"></div>
+  <p id="rubric" class="rubric">In the third map all of the countries appear, and the tooltip works properly.The problem was that our match of country ids had three numbers stored as string in one dataset and number in another. For countries with a leading zero {Afghanistan, code "004"} this means the match is assessing "004"==4, which is false. The solution is to convert the string to a number (so that "004" becomes 04) before the match takes place.</p>
+   <div class="mapBig" id="map12"></div>
+  <p id="rubric" class="rubric">The fourth map starts to add in economic data from the IMF. Again, some countries dissappear. And again this is based on a matching problem. Any time you see the US or UK dissappear you should suspect this, since these (and many other) countries has multiple forms (US, USA; UK, GB and NI, Ivory Coast, Cote d'Ivoire). The way to get around this is to match on codes, rather than names.</p>
+   <div class="mapBig" id="map13"></div>
+  <p id="rubric" class="rubric">The final map matches economic data based on 'alpha3' codes (e.g., usa, gbr, civ). At this point you can move to aesthetic tweaks, choosing color pallettes that best represent your data. This one uses a pre-set scheme, "turbo".</p> 
+</div>
+
+
+<span style="display:block; height: 30px;"></span>
+<div class="mapContainer">
+  <p><b>USA</p></b>
+  <p id="rubric" class="rubric">Maps of the US. Research assistance and map drafts by Josh Hellings.</p>
+  <p id="rubric" class="rubric">The set set of maps demonstrates how to use data filters to make your cartography interactive.</p>
+   <div class="mapBig" id="map14"></div>
+  <p id="rubric" class="rubric">The first map is a simple base map. The only addition is a tooltip: hover your mouse over each state.</p>
+   <div class="mapBig" id="map15"></div>
+  <p id="rubric" class="rubric">The second US map plots a single crime variable: motor theft. The key addition to the code is a link to a second data source, and instructions for how to match with the map (i.e., based on the state) and which variable to retrieve.</p>
+   <div class="mapBig" id="map16"></div>
+  <p id="rubric" class="rubric">The third map generalises the second. We add more data in the match [lookup] part of the code, and add a drop-down box. This sets a temporary parameter that colours the map based on the user's selection.</p>
+    <div class="mapBig" id="map17"></div>
+  <p id="rubric" class="rubric">The final map has a few more steps. First, the user selects a year, and this filters the data, so that only numbers for that year are used. Next, the code changes the data from wide to long (aka 'tidy') form using a "fold" transform. Finally, the topoJSON file is matched, based on the state name. Eash of these steps are discussed in detail in class.</p>
+
+   
+</div>
+
+
+<span style="display:block; height: 30px;"></span>
+<div class="mapContainer">
+  <p><b>United Kingdom | International Terretorial Levels</p></b>
+  <p id="rubric" class="rubric">Maps of the UK - Richard Davies and Josh Hellings.</p>
+  <p id="rubric" class="rubric">These UK maps demonstrate differing levels of detail.</p>
+   <div class="mapBig" id="map18"></div>
+   <div class="mapBig" id="map19"></div>
+   <div class="mapBig" id="map20"></div>
+  <p id="rubric" class="rubric">These maps show the NUTS-1, -2 and -3 breakdown for the UK. Also the ITL1, 2 and 3.</p>
+  <div class="mapBig" id="map21"></div>
+  <!-- <div class="mapBig" id="map22"></div> -->
+   
+</div>
+
+
+<span style="display:block; height: 30px;"></span>
+<div class="mapContainer">
+  <p><b>London | Bikes and Crimes</p></b>
+  <p id="rubric" class="rubric">Maps of London - by Josh Hellings.</p>
+  <p id="rubric" class="rubric">Plotting bike docking stations and suspected crimes on a map.</p>
+   <div class="mapBig" id="map23"></div>
+   <div class="mapBig" id="map24"></div>
+   <div class="mapBig" id="map25"></div>
+    
+</div>
+
+
+
+
+
+
+
+
+
+<span style="display:block; height: 40px;"></span>
+<!--/////////////////////////////////////END SECTION - SAME ALL PAGES//////////////////////////-->
+<div class="footer-dark">
+  <footer>
+      <div class="container">
+          <div class="row">
+            <div class="column">
+              <h3>About</h3>
+              <ul>
+                  <li><a href="mission">Mission</a></li>
+                  <li><a href="#">Team</a></li>
+              </ul>
+            </div>
+            <div class="column">
+                  <h3>Resources</h3>
+                  <ul>
+                    <li><a href="datascience">Course</a></li>  
+                    <li><a href="build">Chart Builder</a></li>
+                      
+                  </ul>
+            </div>
+            </div>
+              
+              <div class="footer-finalrow">
+                  <h3>Rapid Charts</h3>
+                  <p>Automated and interactive data analysis.</p>                    </div>
+              
+              <div class="col item social">
+                <a href="https://www.economicsobservatory.com" class="fa fa-university"></a>
+                <a href="https://twitter.com/RD_Economist" class="fa fa-twitter"></a>
+                <a href="https://www.instagram.com/rapidcharts" class="fa fa-instagram"></a>
+                <a href="https://www.linkedin.com/in/rd-economist" class="fa fa-linkedin"></a>
+              </div>
+          
+            </div>
+          <p class="copyright">Richard Davies © 2022</p>
+    </footer>          
+</div>
+<!--/////////////////////////////////////END SECTION - SAME ALL PAGES//////////////////////////-->
+
+</body>
+
+
+<!--/////////////////////////////////////SCRIPTS///////////////////////////////-->
+
+<script>
+    // Set the charts that we want on the page as variables, linking them to JSON files:
+    
+    // Wales
+    var map1 = "charts/maps/Wales1.json";
+    var map2 = "charts/maps/Wales2.json";
+    var map3 = "charts/maps/Wales3.json";
+    var map4 = "charts/maps/Wales4.json";
+
+    // England
+    var map5 = "charts/maps/mapEng1.json";
+    var map6 = "charts/maps/mapEng2.json";
+    var map7 = "charts/maps/mapEng3.json";
+    var map8 = "charts/maps/mapEng4_2.json";
+
+    // World
+    var map9 = "charts/maps/mapWorld1.json";
+    var map10 = "charts/maps/mapWorld2.json";
+    var map11 = "charts/maps/mapWorld3.json";
+    var map12 = "charts/maps/mapWorld4.json";
+    var map13 = "charts/maps/mapWorld5.json";
+
+    // US
+    var map14 = "charts/maps/USA1.json";
+    var map15 = "charts/maps/USA2.json";
+    var map16 = "charts/maps/USA3.json";
+    var map17 = "charts/maps/USA4.json";
+
+    // UK
+    var map18 = "charts/maps/UK1.json";
+    var map19 = "charts/maps/UK2.json";
+    var map20 = "charts/maps/UK3.json";
+    var map21 = "charts/maps/UK4.json";
+    var map22 = "charts/maps/UK5.json";
+
+    // London:
+    var map23 = "charts/maps/mapLondon1.json";
+    var map24 = "charts/maps/mapLondon2.json";
+    var map24 = "charts/maps/mapLondon3.json";
+
+
+    // Embed all
+    vegaEmbed('#map1', map1, {"actions": false});
+    vegaEmbed('#map2', map2, {"actions": false});
+    vegaEmbed('#map3', map3, {"actions": false});
+    vegaEmbed('#map4', map4, {"actions": false});
+
+    vegaEmbed('#map5', map5, {"actions": false});
+    vegaEmbed('#map6', map6, {"actions": false});
+    vegaEmbed('#map7', map7, {"actions": false});
+    vegaEmbed('#map8', map8, {"actions": false});
+    
+    vegaEmbed('#map9', map9, {"actions": false});
+    vegaEmbed('#map10', map10, {"actions": false});
+    vegaEmbed('#map11', map11, {"actions": false});
+    vegaEmbed('#map12', map12, {"actions": false});
+    vegaEmbed('#map13', map13, {"actions": false});
+
+    vegaEmbed('#map14', map14, {"actions": false});
+    vegaEmbed('#map15', map15, {"actions": false});
+    vegaEmbed('#map16', map16, {"actions": false});
+    vegaEmbed('#map17', map17, {"actions": false});
+
+    vegaEmbed('#map18', map18, {"actions": false});
+    vegaEmbed('#map19', map19, {"actions": false});
+    vegaEmbed('#map20', map20, {"actions": false});
+    vegaEmbed('#map21', map21, {"actions": false});
+    vegaEmbed('#map22', map22, {"actions": false});
+    vegaEmbed('#map23', map23, {"actions": false});
+    vegaEmbed('#map24', map24, {"actions": false});
+    vegaEmbed('#map25', map25, {"actions": false});
+
+
+</script>
+
+<!--/////////////////////////////////////SCRIPTS///////////////////////////////-->
+
+</html>
